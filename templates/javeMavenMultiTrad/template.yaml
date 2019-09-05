@@ -1,0 +1,26 @@
+version: 1
+type: pipeline-template
+templateType: MULTIBRANCH
+name: javaMavenMultiTradV2
+parameters:
+  - name: mavenAdditionalTargets
+    type: string
+    displayName: Additional Maven build targets
+  - name: otherParam
+    type: string
+    displayName: Another parameter
+  - name: repoName
+    type: string
+    displayName: GitHub repository name
+  - name: repoOwner
+    type: string
+    displayName: GitHub repository owner
+  - name: gitCredentialsId
+    type: credentials
+    displayName: CredentialsID for GitHub 
+multibranch:
+  branchSource:
+    github:
+      repoOwner: ${repoOwner}
+      repository: ${repoName}
+      credentialsId: ${gitCredentialsId}
